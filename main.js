@@ -1,5 +1,3 @@
-let dt1 = Date.now();
-let dt2 = Date.now();
 funcs.save();
 funcs.load();
 (function main(){
