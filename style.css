@@ -22,7 +22,7 @@
   align-items: center;
   flex-direction: column;
 }
-.upg-container, #time-reset {
+.upg-container,.reset-container {
   display: flex;
   width: 400px;
   align-content: center;
