@@ -21,7 +21,7 @@ function updateUI() {
 		document.querySelector(`button#time-reset.reset-button`).textContent = `Reset ${data.timeResets.points.log(10).sub(data.timeResets.points).mul(1e-27).floor()} times`
 	}
 	document.querySelector(`button#time-reset.reset-button`).onclick = (_ => {
-		if(data.gte(Decimal.mul(1e-27,new Decimal(10).pow(data.timeResets.points))))funcs.timeReset()
+		if(data.seconds.gte(Decimal.mul(1e-27,new Decimal(10).pow(data.timeResets.points))))funcs.timeReset()
 	})
 	document.querySelector(`div#time-reset`).style.display = data.timeResets.unlocked ? "inline" : "none"
 	document.querySelector(`div#time-reset.reset-container`).style.display = data.timeResets.unlocked ? "flex" : "none"
