@@ -23,6 +23,9 @@ const data = {
 			gain: new Decimal(4)
 		}),
 	},
-	timeResets: new Decimal(0),
+	timeResets: {
+		points: new Decimal(0),
+		unlocked: false,
+	},
 	timeParadoxes: new Decimal(0),
 }
