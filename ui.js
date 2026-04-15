@@ -18,11 +18,7 @@ function updateUI() {
 	} else if (!data.timeResets.canMax) {
 		document.querySelector(`button#time-reset.reset-button`).textContent = `Reset`
 	} else {
-		document.querySelector(`button#time-reset.reset-button`).textContent = `Reset ${Decimal.affordGeometricSeries(
-				data.seconds,
-				Decimal.mul(1e-27,new Decimal(10).pow(data.timeResets.points)),
-				10
-			)} times`
+		document.querySelector(`button#time-reset.reset-button`).textContent = `Reset ${data.timeResets.points.log(10).sub(data.timeResets.points).mul(1e-21).floor()} times`
 	}
 	document.querySelector(`button#time-reset.reset-button`).onclick = (_ => {
 		funcs.timeReset()
