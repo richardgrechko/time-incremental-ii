@@ -23,7 +23,7 @@ function updateUI() {
 	document.querySelector(`button#time-reset.reset-button`).onclick = (_ => {
 		if(data.gte(Decimal.mul(1e-27,new Decimal(10).pow(data.timeResets.points))))funcs.timeReset()
 	})
-	document.querySelector(`div#time-reset`).style.display = data.timeResets.unlocked ? "flex" : "none"
+	document.querySelector(`div#time-reset`).style.display = data.timeResets.unlocked ? "inline" : "none"
 	document.querySelector(`div#time-reset.reset-button`).disabled = !data.timeResets.unlocked
 	upgradeUI("hastener")
 	upgradeUI("generator")
