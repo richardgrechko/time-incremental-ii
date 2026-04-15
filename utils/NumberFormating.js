@@ -36,12 +36,12 @@ function fixValue(x, y = 0) {
 
 function sumValues(x) {
     x = Object.values(x)
-    if (!x[0]) return decimalZero
+    if (!x[0]) return new Decimal(0)
     return x.reduce((a, b) => Decimal.add(a, b))
 }
 
 function format(decimal, precision = 2, small) {
-    small = small || modInfo.allowSmall
+    small = small 
     decimal = new Decimal(decimal)
     if (isNaN(decimal.sign) || isNaN(decimal.layer) || isNaN(decimal.mag)) {
         return "nan"
