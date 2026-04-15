@@ -3,7 +3,7 @@ const funcs = {
 		localStorage.setItem("timeincrementaliisave",btoa(unescape(encodeURIComponent(JSON.stringify(data)))))
 	},
 	getSave() {
-		return JSON.parse(decodeURIComponent(escape(atob(localStorage.getItem("timeincrementaliisave"))))))
+		return JSON.parse(decodeURIComponent(escape(atob(localStorage.getItem("timeincrementaliisave")))))
 	},
 	load() {
 		let obj = funcs.getSave()
