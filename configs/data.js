@@ -14,12 +14,12 @@ const data = {
 		}),
 		powerer: new Upgrade({
 			cost: new Decimal(1e-18),
-			multi: new Decimal(25),
+			multi: new Decimal(120),
 			gain: new Decimal(3)
 		}),
 		counter: new Upgrade({
 			cost: new Decimal(10),
-			multi: new Decimal(120),
+			multi: new Decimal(600),
 			gain: new Decimal(4)
 		}),
 	},
