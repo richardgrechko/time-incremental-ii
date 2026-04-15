@@ -45,7 +45,7 @@
   color: #aaa;
   text-align: start;
 }
-#current-gain {
+.current-gain {
   font-size: 12px;
   font-style: italic;
   color: #aaa;
