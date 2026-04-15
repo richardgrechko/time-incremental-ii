@@ -27,6 +27,8 @@ function updateUI() {
 	document.querySelector(`button#time-reset.reset-button`).onclick = (_ => {
 		funcs.timeReset()
 	})
+	document.querySelector(`div#time-reset`).style.display = data.timeResets.unlocked ? "flex" : "none"
+	document.querySelector(`div#time-reset.reset-button`).disabled = !data.timeResets.unlocked
 	upgradeUI("hastener")
 	upgradeUI("generator")
 	upgradeUI("powerer")
