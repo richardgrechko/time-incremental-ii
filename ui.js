@@ -15,4 +15,5 @@ function updateUI() {
 	upgradeUI("hastener")
 	upgradeUI("generator")
 	upgradeUI("powerer")
+	upgradeUI("counter")
 }
