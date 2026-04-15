@@ -22,22 +22,25 @@
   align-items: center;
   flex-direction: column;
 }
-.upg-container,.reset-container {
-  display: flex;
+.upg-container {
   width: 400px;
-  align-content: center;
-  align-items: stretch;
+  display: flex;
   flex-direction: column;
+  justify-content: center;
 }
-#time-reset {
-  height: 100px;
+.reset-container {
+  width: 100%;
+  display: flex;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
 }
 .upg-buttons {
   display: flex;
   justify-content: stretch;
   width: 400px;
 }
-.upg-button, .reset-button {
+.upg-button {
   background-color: #bbb;
   color: #333;
   width: 100%;
@@ -45,10 +48,25 @@
   border: thick black;
   height: 25px;
 }
-.upg-button:disabled, .reset-button:disabled {
+.reset-button {
+  background-color: #bbb;
+  color: #333;
+  width: 250px;
+  height: 100px;
+  font-weight: bold;
+  border: thick black;
+  height: 50px;
+}
+.upg-button:disabled {
   background-color: #888;
   color: #000;
   width: 100%;
+}
+.reset-button:disabled {
+  background-color: #888;
+  color: #000;
+  width: 250px;
+  height: 50px;
 }
 .upg-max-button {
   background-color: #fff;
