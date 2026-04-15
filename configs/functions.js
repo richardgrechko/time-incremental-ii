@@ -16,8 +16,8 @@ const funcs = {
 			data.upgrades = {};
 			data.upgrades.hastener = new Upgrade(obj.upgrades.hastener ?? {
 				cost: new Decimal(1e-29),
-				multi: new Decimal(2),
-				gain: new Decimal(1.5)
+				multi: new Decimal(2.5),
+				gain: new Decimal(2)
 			});
 			data.upgrades.hastener.level = new Decimal(obj.upgrades.hastener.level)
 			data.upgrades.generator = new Upgrade(obj.upgrades.generator ?? {
