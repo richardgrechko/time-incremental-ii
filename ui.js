@@ -8,5 +8,4 @@ function updateUI() {
 	upgradeUI("hastener")
 	upgradeUI("generator")
 	upgradeUI("powerer")
-	requestAnimationFrame(updateUI)
 }
