@@ -26,6 +26,7 @@ const data = {
 	timeResets: {
 		points: new Decimal(0),
 		unlocked: false,
+		auto: false,
 	},
 	timeParadoxes: new Decimal(0),
 }
