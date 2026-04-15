@@ -69,7 +69,7 @@ const funcs = {
 		data.speed = data.upgrades.hastener.getMulti()
 		.mul(data.upgrades.generator.getMulti())
 		.mul(data.upgrades.powerer.getMulti())
-		.mul(data.timeResets.points.add(1).sqrt())
+		.mul(data.timeResets.points.add(1).root(1.25))
 		.div(1e30)
 		if (data.seconds.gte(1e-27)) {
 			data.timeResets.unlocked = true;
