@@ -13,9 +13,14 @@ const data = {
 			gain: new Decimal(2)
 		}),
 		powerer: new Upgrade({
-			cost: new Decimal(31556952),
+			cost: new Decimal(1e-18),
 			multi: new Decimal(25),
 			gain: new Decimal(4)
+		}),
+		counter: new Upgrade({
+			cost: new Decimal(1),
+			multi: new Decimal(120),
+			gain: new Decimal(10)
 		}),
 	},
 	timeParadoxes: new Decimal(0),
