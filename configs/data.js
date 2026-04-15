@@ -27,6 +27,7 @@ const data = {
 		points: new Decimal(0),
 		unlocked: false,
 		auto: false,
+		canMax: false,
 	},
 	timeParadoxes: new Decimal(0),
 }
