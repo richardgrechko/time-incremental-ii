@@ -72,6 +72,9 @@ const funcs = {
 		if (data.seconds.gte(1e-21)) {
 			data.timeResets.unlocked = true;
 		}
+		if (data.timeResets.auto) {
+			funcs.timeReset()
+		}
 		requestAnimationFrame(funcs.update)
 	},
 }
