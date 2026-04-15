@@ -101,7 +101,7 @@ function formatTimeEx(s,prec=2) {
         return format(s.mul("1e30"),prec,true) + "qs"
     }
     if (s.lt("60")) {
-        return format(s.div(new Decimal(1000).pow(s.log10().div(3))),prec) + prefixes[0][s.log10().div(3).neg().toNumber()] + "s"
+        return format(s.div(new Decimal(1000).pow(s.log10().div(3).floor())),prec) + prefixes[0][s.log10().div(3).floor().neg().toNumber()] + "s"
     }
     if (s.lt("3600")) {
         return format(s.div(60),prec) + " min"
@@ -126,14 +126,14 @@ function formatTimeEx(s,prec=2) {
     }
     if (s.lt("3.1556952e37")) {
         return format(s.div("31556952")
-            .div(new Decimal(1000).pow(s.div("31556952").log10().div(3))),prec)
-            + prefixes[1][s.div("31556952").log10().div(3).toNumber()] + "y"
+            .div(new Decimal(1000).pow(s.div("31556952").log10().div(3).floor())),prec)
+            + prefixes[1][s.div("31556952").log10().div(3).floor().toNumber()] + "y"
     }
     if (s.lt("3.1556952e307")) {
         return format(s.div("31556952")
-            .div(new Decimal(1000).pow(s.div("31556952").log10().div(3))),prec)
-            + prefixes[2][Math.floor(s.div("31556952").log10().div(3).toNumber()/10)]
-            + prefixes[1][s.div("31556952").log10().div(3).toNumber()%10] + "y"
+            .div(new Decimal(1000).pow(s.div("31556952").log10().div(3).floor())),prec)
+            + prefixes[2][Math.floor(s.div("31556952").log10().div(3).floor().toNumber()/10)]
+            + prefixes[1][s.div("31556952").log10().div(3).floor().toNumber()%10] + "y"
     }
         return format(s.div("31556952"),prec) + "y"
 }
