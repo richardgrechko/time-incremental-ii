@@ -3,7 +3,7 @@ function exponentialFormat(num, precision, mantissa = true) {
     let e = num.log10().floor()
     let m = num.div(Decimal.pow(10, e))
     if (m.toStringWithDecimalPlaces(precision) == 10) {
-        m = decimalOne
+        m = new Decimal(1)
         e = e.add(1)
     }
     e = (e.gte(1e9) ? format(e, 3) : (e.gte(10000) ? commaFormat(e, 0) : e.toStringWithDecimalPlaces(0)))
@@ -98,7 +98,7 @@ function formatTimeEx(s,prec=2) {
         return "0s"
     }
     if (s.lt("1e-30")) {
-        return format(s.div("1e30"),prec) + "qs"
+        return format(s.mul("1e30"),prec,true) + "qs"
     }
     if (s.lt("60")) {
         return format(s.div(new Decimal(1000).pow(s.log10().div(3))),prec) + prefixes[0][s.log10().div(3).neg().toNumber()] + "s"
