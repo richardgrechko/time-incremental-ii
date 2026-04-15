@@ -25,18 +25,7 @@ function updateUI() {
 			)} times`
 	}
 	document.querySelector(`button#time-reset.reset-button`).onclick = (_ => {
-		if (!data.timeResets.canMax){
-			data.timeResets.points = data.timeResets.points.add(1)
-		} else {
-			data.timeResets.points = data.timeResets.points.add(
-				Decimal.affordGeometricSeries(
-					data.seconds,
-					Decimal.mul(1e-21,new Decimal(100).pow(data.timeResets.points)),
-					10
-				)
-			)
-		}
-		data.seconds = new Decimal(0)
+		funcs.timeReset()
 	})
 	upgradeUI("hastener")
 	upgradeUI("generator")
