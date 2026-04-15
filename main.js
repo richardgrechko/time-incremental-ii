@@ -1,11 +1,11 @@
-let dt1 = Date.now()
-let dt2 = Date.now()
-funcs.load()
+let dt1 = Date.now();
+let dt2 = Date.now();
+funcs.save();
+funcs.load();
 (function main(){
   dt1 = Date.now()
-  let dt = dt2-dt1
+  funcs.update((dt1-dt2)/1000)
   dt2 = Date.now()
-  funcs.update(dt)
   updateUI()
   requestAnimationFrame(main)
 })()
