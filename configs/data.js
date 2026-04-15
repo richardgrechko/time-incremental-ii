@@ -18,7 +18,7 @@ const data = {
 			gain: new Decimal(4)
 		}),
 		counter: new Upgrade({
-			cost: new Decimal(1),
+			cost: new Decimal(10),
 			multi: new Decimal(120),
 			gain: new Decimal(10)
 		}),
