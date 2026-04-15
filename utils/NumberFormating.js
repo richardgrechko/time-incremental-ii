@@ -44,18 +44,16 @@ function format(decimal, precision = 2, small) {
     small = small || modInfo.allowSmall
     decimal = new Decimal(decimal)
     if (isNaN(decimal.sign) || isNaN(decimal.layer) || isNaN(decimal.mag)) {
-        player.hasNaN = true;
-        return "NaN"
+        return "nan"
     }
     if (decimal.sign < 0) return "-" + format(decimal.neg(), precision, small)
-    if (decimal.mag == Number.POSITIVE_INFINITY) return "Infinity"
+    if (decimal.mag == Number.POSITIVE_INFINITY) return "inf"
     if (decimal.gte("eeee1000")) {
         var slog = decimal.slog()
         if (slog.gte(1e6)) return "F" + format(slog.floor())
         else return Decimal.pow(10, slog.sub(slog.floor())).toStringWithDecimalPlaces(3) + "F" + commaFormat(slog.floor(), 0)
     }
     else if (decimal.gte("1e1000000")) return exponentialFormat(decimal, 0, false)
-    else if (decimal.gte("1e10000")) return exponentialFormat(decimal, 0)
     else if (decimal.gte(1e9)) return exponentialFormat(decimal, precision)
     else if (decimal.gte(1e3)) return commaFormat(decimal, 0)
     else if (decimal.gte(0.0001) || !small) return regularFormat(decimal, precision)
@@ -85,6 +83,59 @@ function formatTime(s) {
     else if (s < 86400) return formatWhole(Math.floor(s / 3600)) + "h " + formatWhole(Math.floor(s / 60) % 60) + "m " + format(s % 60) + "s"
     else if (s < 31536000) return formatWhole(Math.floor(s / 86400) % 365) + "d " + formatWhole(Math.floor(s / 3600) % 24) + "h " + formatWhole(Math.floor(s / 60) % 60) + "m " + format(s % 60) + "s"
     else return formatWhole(Math.floor(s / 31536000)) + "y " + formatWhole(Math.floor(s / 86400) % 365) + "d " + formatWhole(Math.floor(s / 3600) % 24) + "h " + formatWhole(Math.floor(s / 60) % 60) + "m " + format(s % 60) + "s"
+}
+function formatTimeEx(s) {
+    s = new Decimal(s)
+    let prefixes = [
+        ["q","r","y","z","a","f","p","n","µ","m",""],
+        ["","k","M","G","T","P","E","Z","Y","R"],
+        ["","Q","A","H","Ky","Pi","S","Pe","N","Zo"],
+    ]
+    if (s.lt(0)) {
+        return "-"+formatTimeEx(s.neg())
+    }
+    if (s.eq(0)) {
+        return "0s"
+    }
+    if (s.lt("1e-30")) {
+        return s.div("1e30") + "qs"
+    }
+    if (s.lt("60")) {
+        return s.div(new Decimal(1000).pow(s.log10().div(3))) + prefixes[0][s.log10().div(3).neg().toNumber()] + "s"
+    }
+    if (s.lt("3600")) {
+        return s.div(60) + " min"
+    }
+    if (s.lt("86400")) {
+        return s.div(3600) + "h"
+    }
+    if (s.lt("31556952")) {
+        return s.div(86400) + "d"
+    }
+    if (s.lt("31556952000")) {
+        return s.div(31556952) + "y"
+    }
+    if (s.lt("31556952000000")) {
+        return s.div("31556952000") + "mil"
+    }
+    if (s.lt("31556952000000000")) {
+        return s.div("31556952000000") + " epochs"
+    }
+    if (s.lt("3.1556952e19")) {
+        return s.div("31556952000000000") + " eons"
+    }
+    if (s.lt("3.1556952e37")) {
+        return s.div("31556952")
+            .div(new Decimal(1000).pow(s.div("31556952").log10().div(3)))
+            + prefixes[1][s.div("31556952").log10().div(3).toNumber()] + "y"
+    }
+    if (s.lt("3.1556952e307")) {
+        return s.div("31556952")
+            .div(new Decimal(1000).pow(s.div("31556952").log10().div(3)))
+            + prefixes[2][Math.floor(s.div("31556952").log10().div(3).toNumber()/10)]
+            + prefixes[1][s.div("31556952").log10().div(3).toNumber()%10] + "y"
+    }
+        return s.div("31556952") + "y"
 }
 
 function toPlaces(x, precision, maxAccepted) {
