@@ -13,19 +13,29 @@ function updateUI() {
 	document.getElementById("points-stat").textContent = formatTimeEx(data.seconds)
 	document.getElementById("speed-stat").textContent = format(data.speed,2,true)
 	document.querySelector(`button#time-reset.reset-button`).disabled = data.seconds.lt(Decimal.mul(1e-21,new Decimal(100).pow(data.timeResets.points)))
-	document.querySelector(`button#time-reset.reset-button`).onclick = (_ => {
-		if (!data.timeResets.canMax){
-			data.timeResets.points = data.timeResets.points.add(1)
-			data.seconds = new Decimal(0)
-			return
-		}
-		data.timeResets.points = data.timeResets.points.add(
-			Decimal.affordGeometricSeries(
+	if (data.seconds.lt(Decimal.mul(1e-21,new Decimal(100).pow(data.timeResets.points)))) {
+		document.querySelector(`button#${up}.upg-button`).textContent = `Cannot reset`
+	} else if (!data.timeResets.canMax) {
+		document.querySelector(`button#${up}.upg-button`).textContent = `Reset`
+	} else {
+		document.querySelector(`button#${up}.upg-button`).textContent = `Reset ${Decimal.affordGeometricSeries(
 				data.seconds,
 				Decimal.mul(1e-21,new Decimal(100).pow(data.timeResets.points)),
 				10
+			)} times`
+	}
+	document.querySelector(`button#time-reset.reset-button`).onclick = (_ => {
+		if (!data.timeResets.canMax){
+			data.timeResets.points = data.timeResets.points.add(1)
+		} else {
+			data.timeResets.points = data.timeResets.points.add(
+				Decimal.affordGeometricSeries(
+					data.seconds,
+					Decimal.mul(1e-21,new Decimal(100).pow(data.timeResets.points)),
+					10
+				)
 			)
-		)
+		}
 		data.seconds = new Decimal(0)
 	})
 	upgradeUI("hastener")
