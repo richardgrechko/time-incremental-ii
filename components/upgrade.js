@@ -24,8 +24,8 @@ class Upgrade {
 				Decimal.affordGeometricSeries(data.seconds,this.getCost(),this.multi)
 			)
 			data.seconds = data.seconds.sub(
-				Decimal.affordGeometricSeries(
-					Decimal.sumGeometricSeries(data.seconds,this.getCost(),this.multi)
+				Decimal.sumGeometricSeries(
+					Decimal.affordGeometricSeries(data.seconds,this.getCost(),this.multi)
 					,this.getCost(),this.multi)
 			)
 		}
