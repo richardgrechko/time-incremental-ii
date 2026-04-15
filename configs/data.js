@@ -8,7 +8,7 @@ const data = {
 			gain: new Decimal(1.5)
 		}),
 		generator: new Upgrade({
-			cost: new Decimal(1e-19),
+			cost: new Decimal(1e-26),
 			multi: new Decimal(10),
 			gain: new Decimal(1.5)
 		}),
