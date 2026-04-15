@@ -53,6 +53,7 @@ const funcs = {
 		data.speed = data.upgrades.hastener.getMulti()
 		.mul(data.upgrades.generator.getMulti())
 		.mul(data.upgrades.powerer.getMulti())
+		.mul(data.timeResets.points.add(1).sqrt())
 		.div(1e30)
 		requestAnimationFrame(funcs.update)
 	},
