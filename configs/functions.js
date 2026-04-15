@@ -17,25 +17,25 @@ const funcs = {
 			data.upgrades.hastener = new Upgrade(obj.upgrades.hastener ?? {
 				cost: new Decimal(1e-29),
 				multi: new Decimal(2.5),
-				gain: new Decimal(2)
+				gain: new Decimal(1.5)
 			});
 			data.upgrades.hastener.level = new Decimal(obj.upgrades.hastener.level)
 			data.upgrades.generator = new Upgrade(obj.upgrades.generator ?? {
 				cost: new Decimal(1e-26),
 				multi: new Decimal(10),
-				gain: new Decimal(2)
+				gain: new Decimal(1.5)
 			});
 			data.upgrades.generator.level = new Decimal(obj.upgrades.generator.level)
 			data.upgrades.powerer = new Upgrade(obj.upgrades.powerer ?? {
 				cost: new Decimal(1e-19),
 				multi: new Decimal(25),
-				gain: new Decimal(3)
+				gain: new Decimal(2)
 			});
 			data.upgrades.powerer.level = new Decimal(obj.upgrades.powerer.level)
 			data.upgrades.counter = new Upgrade(obj.upgrades.counter ?? {
 				cost: new Decimal(10),
 				multi: new Decimal(120),
-				gain: new Decimal(4)
+				gain: new Decimal(3)
 			});
 			data.upgrades.counter.level = new Decimal(obj.upgrades.counter.level)
 		} catch (e) {
