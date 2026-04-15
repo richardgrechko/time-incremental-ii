@@ -4,8 +4,8 @@ const data = {
 	upgrades: {
 		hastener: new Upgrade({
 			cost: new Decimal(1e-29),
-			multi: new Decimal(2),
-			gain: new Decimal(1.5)
+			multi: new Decimal(2.5),
+			gain: new Decimal(2)
 		}),
 		generator: new Upgrade({
 			cost: new Decimal(1e-21),
