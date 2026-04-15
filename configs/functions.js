@@ -27,7 +27,7 @@ const funcs = {
 			});
 			data.upgrades.generator.level = new Decimal(obj.upgrades.generator.level)
 			data.upgrades.powerer = new Upgrade(obj.upgrades.powerer ?? {
-				cost: new Decimal(1e-19),
+				cost: new Decimal(1e-26),
 				multi: new Decimal(25),
 				gain: new Decimal(3)
 			});
