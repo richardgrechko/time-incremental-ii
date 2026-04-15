@@ -1,0 +1,53 @@
+* {
+  background-color: #000;
+  color: #fff;
+  font-size: 13px;
+  font-family: "Inconsolata";
+  text-align: center;
+}
+#stats {
+  font-size: 20px;
+  font-weight: bold;
+}
+#statgain {
+  font-size: 12px;
+  font-weight: bold;
+  font-style: italic;
+  color: #aaa;
+}
+.upg-container {
+  display: flex;
+  justify-content: center;
+  width: 400px;
+}
+.upg-buttons {
+  display: flex;
+  justify-content: stretch;
+  width: 400px;
+}
+.upg-button {
+  background-color: #888;
+  color: #333;
+  width: 100%;
+}
+.upg-button:disabled {
+  background-color: #800;
+  color: #300;
+  width: 100%;
+}
+.upg-max-button {
+  width: 10px;
+}
+#upg-name {
+  font-size: 12px;
+  font-weight: bold;
+  font-style: italic;
+  color: #aaa;
+  text-align: start;
+}
+#current-gain {
+  font-size: 12px;
+  font-style: italic;
+  color: #aaa;
+  text-align: end;
+}
