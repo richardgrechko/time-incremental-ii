@@ -27,11 +27,17 @@ const funcs = {
 			});
 			data.upgrades.generator.level = new Decimal(obj.upgrades.generator.level)
 			data.upgrades.powerer = new Upgrade(obj.upgrades.powerer ?? {
-				cost: new Decimal(31556952),
+				cost: new Decimal(1e-19),
 				multi: new Decimal(25),
 				gain: new Decimal(4)
 			});
 			data.upgrades.powerer.level = new Decimal(obj.upgrades.powerer.level)
+			data.upgrades.counter = new Upgrade(obj.upgrades.counter ?? {
+				cost: new Decimal(10),
+				multi: new Decimal(120),
+				gain: new Decimal(10)
+			});
+			data.upgrades.counter.level = new Decimal(obj.upgrades.counter.level)
 		} catch (e) {
 			alert(e)
 		}
