@@ -84,7 +84,7 @@ function formatTime(s) {
     else if (s < 31536000) return formatWhole(Math.floor(s / 86400) % 365) + "d " + formatWhole(Math.floor(s / 3600) % 24) + "h " + formatWhole(Math.floor(s / 60) % 60) + "m " + format(s % 60) + "s"
     else return formatWhole(Math.floor(s / 31536000)) + "y " + formatWhole(Math.floor(s / 86400) % 365) + "d " + formatWhole(Math.floor(s / 3600) % 24) + "h " + formatWhole(Math.floor(s / 60) % 60) + "m " + format(s % 60) + "s"
 }
-function formatTimeEx(s) {
+function formatTimeEx(s,prec=2) {
     s = new Decimal(s)
     let prefixes = [
         ["q","r","y","z","a","f","p","n","µ","m",""],
@@ -98,44 +98,44 @@ function formatTimeEx(s) {
         return "0s"
     }
     if (s.lt("1e-30")) {
-        return s.div("1e30") + "qs"
+        return format(s.div("1e30"),prec) + "qs"
     }
     if (s.lt("60")) {
-        return s.div(new Decimal(1000).pow(s.log10().div(3))) + prefixes[0][s.log10().div(3).neg().toNumber()] + "s"
+        return format(s.div(new Decimal(1000).pow(s.log10().div(3))),prec) + prefixes[0][s.log10().div(3).neg().toNumber()] + "s"
     }
     if (s.lt("3600")) {
-        return s.div(60) + " min"
+        return format(s.div(60),prec) + " min"
     }
     if (s.lt("86400")) {
-        return s.div(3600) + "h"
+        return format(s.div(3600),prec) + "h"
     }
     if (s.lt("31556952")) {
-        return s.div(86400) + "d"
+        return format(s.div(86400),prec) + "d"
     }
     if (s.lt("31556952000")) {
-        return s.div(31556952) + "y"
+        return format(s.div(31556952),prec) + "y"
     }
     if (s.lt("31556952000000")) {
-        return s.div("31556952000") + "mil"
+        return format(s.div("31556952000"),prec) + "mil"
     }
     if (s.lt("31556952000000000")) {
-        return s.div("31556952000000") + " epochs"
+        return format(s.div("31556952000000"),prec) + " epochs"
     }
     if (s.lt("3.1556952e19")) {
-        return s.div("31556952000000000") + " eons"
+        return format(s.div("31556952000000000"),prec) + " eons"
     }
     if (s.lt("3.1556952e37")) {
-        return s.div("31556952")
-            .div(new Decimal(1000).pow(s.div("31556952").log10().div(3)))
+        return format(s.div("31556952")
+            .div(new Decimal(1000).pow(s.div("31556952").log10().div(3))),prec)
             + prefixes[1][s.div("31556952").log10().div(3).toNumber()] + "y"
     }
     if (s.lt("3.1556952e307")) {
-        return s.div("31556952")
-            .div(new Decimal(1000).pow(s.div("31556952").log10().div(3)))
+        return format(s.div("31556952")
+            .div(new Decimal(1000).pow(s.div("31556952").log10().div(3))),prec)
             + prefixes[2][Math.floor(s.div("31556952").log10().div(3).toNumber()/10)]
             + prefixes[1][s.div("31556952").log10().div(3).toNumber()%10] + "y"
     }
-        return s.div("31556952") + "y"
+        return format(s.div("31556952"),prec) + "y"
 }
 
 function toPlaces(x, precision, maxAccepted) {
