@@ -13,12 +13,12 @@ function updateUI() {
 	document.getElementById("points-stat").textContent = formatTimeEx(data.seconds)
 	document.getElementById("speed-stat").textContent = format(data.speed,2,true)
 	document.querySelector(`button#time-reset.reset-button`).disabled = data.seconds.lt(Decimal.mul(1e-21,new Decimal(100).pow(data.timeResets.points)))
-	if (data.seconds.lt(Decimal.mul(1e-21,new Decimal(10).pow(data.timeResets.points)))) {
+	if (data.seconds.lt(Decimal.mul(1e-27,new Decimal(10).pow(data.timeResets.points)))) {
 		document.querySelector(`button#time-reset.reset-button`).textContent = `Cannot reset`
 	} else if (!data.timeResets.canMax) {
 		document.querySelector(`button#time-reset.reset-button`).textContent = `Reset`
 	} else {
-		document.querySelector(`button#time-reset.reset-button`).textContent = `Reset ${data.timeResets.points.log(10).sub(data.timeResets.points).mul(1e-21).floor()} times`
+		document.querySelector(`button#time-reset.reset-button`).textContent = `Reset ${data.timeResets.points.log(10).sub(data.timeResets.points).mul(1e-27).floor()} times`
 	}
 	document.querySelector(`button#time-reset.reset-button`).onclick = (_ => {
 		funcs.timeReset()
