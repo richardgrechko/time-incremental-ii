@@ -55,6 +55,9 @@ const funcs = {
 		.mul(data.upgrades.powerer.getMulti())
 		.mul(data.timeResets.points.add(1).sqrt())
 		.div(1e30)
+		if (data.seconds.gte(1e-21)) {
+			data.timeResets.unlocked = true;
+		}
 		requestAnimationFrame(funcs.update)
 	},
 }
