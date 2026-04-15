@@ -87,7 +87,7 @@ function formatTime(s) {
 function formatTimeEx(s,prec=2) {
     s = new Decimal(s)
     let prefixes = [
-        ["q","r","y","z","a","f","p","n","µ","m",""],
+        ["q","r","y","z","a","f","p","n","µ","m",""].reverse(),
         ["","k","M","G","T","P","E","Z","Y","R"],
         ["","Q","A","H","Ky","Pi","S","Pe","N","Zo"],
     ]
@@ -101,7 +101,7 @@ function formatTimeEx(s,prec=2) {
         return format(s.mul("1e30"),prec,true) + "qs"
     }
     if (s.lt("60")) {
-        return format(s.div(new Decimal(1000).pow(s.log10().div(3).floor())),prec) + prefixes[0][s.log10().div(3).floor().neg().toNumber()] + "s"
+        return format(s.div(new Decimal(1000).pow(s.log10().div(3).sub(1).floor())),prec) + prefixes[0][s.log10().div(3).neg().add(1).floor().toNumber()] + "s"
     }
     if (s.lt("3600")) {
         return format(s.div(60),prec) + " min"
