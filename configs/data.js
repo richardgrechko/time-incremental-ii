@@ -23,5 +23,6 @@ const data = {
 			gain: new Decimal(4)
 		}),
 	},
+	timeResets: new Decimal(0),
 	timeParadoxes: new Decimal(0),
 }
