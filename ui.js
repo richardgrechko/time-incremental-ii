@@ -7,6 +7,7 @@ function upgradeUI(up) {
 	document.querySelector(`button#${up}.upg-max-button`).onclick = (_ => {
 		data.upgrades[up].buyMax()
 	})
+	document.querySelector(`button#${up}.upg-button`).disabled = data.seconds.lt(data.upgrades[up].getCost())
 }
 function updateUI() {
 	document.getElementById("points-stat").textContent = formatTimeEx(data.seconds)
