@@ -45,6 +45,20 @@ const funcs = {
 			alert(e)
 		}
 	},
+	timeReset() {
+		if (!data.timeResets.canMax){
+			data.timeResets.points = data.timeResets.points.add(1)
+		} else {
+			data.timeResets.points = data.timeResets.points.add(
+				Decimal.affordGeometricSeries(
+					data.seconds,
+					Decimal.mul(1e-21,new Decimal(100).pow(data.timeResets.points)),
+					10
+				)
+			)
+		}
+		data.seconds = new Decimal(0)
+	},
 	update() {
 		dt1 = Date.now()
 		delta = (dt1-dt2)/1000
