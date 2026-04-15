@@ -21,13 +21,13 @@ const funcs = {
 			});
 			data.upgrades.hastener.level = new Decimal(obj.upgrades.hastener.level)
 			data.upgrades.generator = new Upgrade(obj.upgrades.generator ?? {
-				cost: new Decimal(1e-12),
+				cost: new Decimal(1e-26),
 				multi: new Decimal(10),
 				gain: new Decimal(2)
 			});
 			data.upgrades.generator.level = new Decimal(obj.upgrades.generator.level)
 			data.upgrades.powerer = new Upgrade(obj.upgrades.powerer ?? {
-				cost: new Decimal(1e-26),
+				cost: new Decimal(1e-19),
 				multi: new Decimal(25),
 				gain: new Decimal(3)
 			});
