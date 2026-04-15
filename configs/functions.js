@@ -31,9 +31,10 @@ const funcs = {
 		}
 	},
 	update(delta) {
-		data.seconds = data.seconds.add(obj.speed)
-		data.speed = new Decimal(1e-30).mul(data.upgrades.hastener.getMulti())
+		data.seconds = data.seconds.add(data.speed.div(delta))
+		data.speed = data.upgrades.hastener.getMulti()
 		.mul(data.upgrades.generator.getMulti())
 		.mul(data.upgrades.powerer.getMulti())
+		.div(1e33)
 	},
 }
