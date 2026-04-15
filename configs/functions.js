@@ -13,6 +13,9 @@ const funcs = {
 		try {
 			data.seconds = fixValue(new Decimal(obj.seconds));
 			data.speed = fixValue(new Decimal(obj.speed),1e-30);
+			data.timeResets = {};
+			data.timeResets.value = fixValue(new Decimal(obj.timeResets.value));
+			data.timeResets.unlocked = obj.timeResets.unlocked ?? false;
 			data.upgrades = {};
 			data.upgrades.hastener = new Upgrade(obj.upgrades.hastener ?? {
 				cost: new Decimal(1e-29),
