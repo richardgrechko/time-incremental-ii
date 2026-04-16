@@ -60,9 +60,11 @@ const funcs = {
 		delta = (dt1-dt2)/1000
 		dt2 = Date.now()
 		data.seconds = data.seconds.add(data.speed.mul(delta))
-		data.speed = data.upgrades.hastener.getMulti()
-		.mul(data.upgrades.generator.getMulti())
-		.mul(data.upgrades.powerer.getMulti())
+		data.speed = new Decimal(1).add(data.upgrades.hastener.level.mul(data.hastener.gain))
+		.mul(new Decimal(1).add(data.upgrades.generator.level.mul(data.upgrades.generator.gain)).pow(
+			new Decimal(1).add(data.upgrades.powerer.level.mul(data.upgrades.powerer.gain))
+		))
+		.mul(data.upgrades.counter.getMulti())
 		.mul(data.timeResets.points.add(1).root(1.25))
 		.div(1e30)
 		if (data.seconds.gte(1e-27)) {
