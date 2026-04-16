@@ -1,5 +1,4 @@
 function upgradeUI(up) {
-	document.querySelector(`div#${up}.current-gain`).textContent = `${format(data.upgrades[up].getMulti())} (Level ${format(data.upgrades[up].level)})`
 	document.querySelector(`button#${up}.upg-button`).textContent = `Buy for ${formatTimeEx(data.upgrades[up].getCost())}`
 	document.querySelector(`button#${up}.upg-button`).onclick = (_ => {
 		data.upgrades[up].buy()
@@ -26,8 +25,12 @@ function updateUI() {
 	document.querySelector(`div#time-reset`).style.display = data.timeResets.unlocked ? "inline" : "none"
 	document.querySelector(`div#time-reset.reset-container`).style.display = data.timeResets.unlocked ? "flex" : "none"
 	document.querySelector(`button#time-reset.reset-button`).disabled = !data.timeResets.unlocked
+	document.querySelector(`div#hastener.current-gain`).textContent = `Currently: +${format(new Decimal(1).add(generator.hastener.level.mul(generator.hastener.gain)))} (Level ${format(generator.hastener.level)})`
 	upgradeUI("hastener")
+	document.querySelector(`div#generator.current-gain`).textContent = `Currently: ×${format(new Decimal(1).add(generator.generator.level.mul(generator.generator.gain)))} (Level ${format(generator.generator.level)})`
 	upgradeUI("generator")
+	document.querySelector(`div#powerer.current-gain`).textContent = `Currently: ^${format(new Decimal(1).add(data.upgrades.powerer.level.mul(data.upgrades.powerer.gain)))} (Level ${format(data.upgrades.powerer.level)})`
 	upgradeUI("powerer")
+	document.querySelector(`div#counter.current-gain`).textContent = `Currently: ×${format(data.upgrades.counter.getMulti())} (Level ${format(data.upgrades.counter.level)})`
 	upgradeUI("counter")
 }
