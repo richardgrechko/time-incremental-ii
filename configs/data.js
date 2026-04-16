@@ -4,17 +4,17 @@ const data = {
 	upgrades: {
 		hastener: new Upgrade({
 			cost: new Decimal(1e-29),
-			multi: new Decimal(2),
+			multi: new Decimal(1.5),
 			gain: new Decimal(0.25)
 		}),
 		generator: new Upgrade({
 			cost: new Decimal(1e-28),
-			multi: new Decimal(10),
+			multi: new Decimal(5),
 			gain: new Decimal(0.5)
 		}),
 		powerer: new Upgrade({
 			cost: new Decimal(1e-27),
-			multi: new Decimal(120),
+			multi: new Decimal(100),
 			gain: new Decimal(1)
 		}),
 		counter: new Upgrade({
