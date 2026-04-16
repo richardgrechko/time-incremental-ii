@@ -60,7 +60,7 @@ const funcs = {
 		delta = (dt1-dt2)/1000
 		dt2 = Date.now()
 		data.seconds = data.seconds.add(data.speed.mul(delta))
-		data.speed = new Decimal(1).add(data.upgrades.hastener.level.mul(data.hastener.gain))
+		data.speed = new Decimal(1).add(data.upgrades.hastener.level.mul(data.upgrades.hastener.gain))
 		.mul(new Decimal(1).add(data.upgrades.generator.level.mul(data.upgrades.generator.gain)).pow(
 			new Decimal(1).add(data.upgrades.powerer.level.mul(data.upgrades.powerer.gain))
 		))
