@@ -136,6 +136,22 @@ function formatTimeEx(s,prec=2) {
             + prefixes[1][s.div("31556952").log10().div(3).floor().toNumber()%10] + "y"
     }
         return format(s.div("31556952"),prec) + "y"
+}                         
+function rankLevelConverter(x) {
+   x = Math.floor(x)
+   let a = [
+      ["","point","rank","tier","tetr","pent","hex","hept","oct","ennea"],
+      ["","hen","du","tr","tetr","pent","hex","hept","oct","enn"],
+      ["","dek","icos","triant","terant","penint","exent","evdoment","ogdat","enent"],
+      ["","hect","diakis","triakis","tetrakis","pentakis","exakis","eptakis","octakis","enniakis"],
+   ]
+   function joiner(x) {
+      return ((x%100==3)?"ia":(x%10<=2)?"":
+          (x%100<10)?"":(x%100==19)?"ea":(x%100<20&&x%100!=13)?"a":"e")
+   }
+   return (x < 10) ? a[0][x] : a[3][Math.floor(x/100)] +
+            a[1][x%10] +
+            joiner(x)+a[2][Math.floor(x/10)%10]
 }
 
 function toPlaces(x, precision, maxAccepted) {
