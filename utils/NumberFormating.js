@@ -89,7 +89,7 @@ function formatTimeEx(s,prec=2) {
     let prefixes = [
         ["q","r","y","z","a","f","p","n","µ","m",""].reverse(),
         ["","k","M","G","T","P","E","Z","Y","R"],
-        ["","Q","A","H","K'","P'","S'","P'","N'","Z'"],
+        ["","Q","A","H","K'","P'","S'","Pr","N'","Z'"],
     ]
     if (s.lt(0)) {
         return "-"+formatTimeEx(s.neg())
