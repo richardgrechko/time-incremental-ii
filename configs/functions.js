@@ -55,6 +55,15 @@ const funcs = {
 			}
 			data.seconds = new Decimal(0)
 	},
+	calcAccel(n) {
+		n = new Decimal(n)
+		return n.mul(n.div(2))
+	},
+	calcAccelPow(n,m) {
+		n = new Decimal(n)
+		m = new Decimal(m)
+		return n.mul(n.div(2).pow(m))
+	},
 	update() {
 		dt1 = Date.now()
 		delta = (dt1-dt2)/1000
