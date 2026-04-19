@@ -1,6 +1,25 @@
 const data = {
 	seconds: new Decimal(0),
 	speed: new Decimal(1e-30), // xNUM speed means you get +NUM seconds per second
+	energy: new Decimal(0),
+	energyGain: new Decimal(0),
+	energyDim: {
+		value: new Decimal(0),
+		amount: new Decimal(0),
+		ups: {
+			X1: {
+				level: new Decimal(0),
+				cost: new Decimal(10),
+				multi: new Decimal(1.5),
+				get totalCost() {
+					return this.cost.mul(this.multi.pow(this.level))
+				},
+				get bulk() {
+					return this.cost.mul(this.multi.pow(this.level))
+				},
+			}
+		},
+	},
 	upgrades: {
 		hastener: new Upgrade({
 			cost: new Decimal(1e-29),
