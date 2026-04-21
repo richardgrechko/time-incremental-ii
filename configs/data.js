@@ -23,10 +23,14 @@ function sumBasePO(x,a,rev=false) {
 }
 
 Decimal.prototype.sumBasePO = function(x,rev) { return sumBasePO(this,x,rev) }
-
+function rank_level(n,cost,level) {
+	n = new Decimal(n).floor()
+        level = new Decimal(level).floor()
+        let total = Decimal.pow(cost,level.sumBasePO(0.1)).mul(cost)
+	return [n.div(total),level]
+}
 const plr = {
 	currentTab: "Main",
-	
 }
 const data = {
 	seconds: new Decimal(0),
