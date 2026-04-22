@@ -26,6 +26,7 @@ Decimal.prototype.sumBasePO = function(x,rev) { return sumBasePO(this,x,rev) }
 function getTierFromRankLevel(n,cost) {
 	n = new Decimal(n).floor()
 	let k = n.log(new Decimal(cost).log10()).pow(1/1.25).root(n.add(1).log10().root(10))
+	if (k.lt(1)) return [n,0]
 	return [n.div(Decimal.pow(cost,k.floor().pow(1.25).pow(n.add(1).log10().root(10)))).floor(),k.floor()]
 }
 const plr = {
