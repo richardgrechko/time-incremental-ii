@@ -23,11 +23,10 @@ function sumBasePO(x,a,rev=false) {
 }
 
 Decimal.prototype.sumBasePO = function(x,rev) { return sumBasePO(this,x,rev) }
-function rank_level(n,cost,level) {
+function getTierFromRankLevel(n,cost) {
 	n = new Decimal(n).floor()
-        level = new Decimal(level).floor()
-        let total = Decimal.pow(cost,level.sumBasePO(0.1)).mul(cost)
-	return [n.div(total),level]
+	let k = n.log(new Decimal(cost).log10()).pow(1/1.25).root(n.add(1).log10().root(10))
+	return [n.div(Decimal.pow(cost,k.floor().pow(1.25).pow(n.add(1).log10().root(10)))).floor(),k.floor()]
 }
 const plr = {
 	currentTab: "Main",
