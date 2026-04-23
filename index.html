@@ -6,46 +6,54 @@
   	<link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
   </head>
   <body>
-    <div id="points">You have <span id="points-stat" class="stats">0s</span>.</div>
-    <div id="speed">The time is going at x<span id="speed-stat" class="stats">1</span> speed.</div>
-    <div id="time-reset" style="display: none">
-      You have <span id="time-resets-stat" class="stats">0</span> time resets.
+    <div id="--tab-main">
+      <div id="points">You have <span id="points-stat" class="stats">0s</span>.</div>
+      <div id="speed">The time is going at x<span id="speed-stat" class="stats">1</span> speed.</div>
+      <div id="time-reset" style="display: none">
+        You have <span id="time-resets-stat" class="stats">0</span> time resets.
+      </div>
+      <div id="time-reset" class="reset-container">
+            <button id="time-reset" class="reset-button" disabled>Cannot reset</button>
+      </div>
+      <div id="upgrades" class="upg-list">
+        <div id="hastener" class="upg-container">
+          <div id="upg-name">Hastener</div>
+          <div id="hastener" class="current-gain">?</div>
+          <div id="hastener" class="upg-buttons">
+            <button id="hastener" class="upg-button">Buy for 1s</button>
+            <button id="hastener" class="upg-max-button">MAX</button>
+          </div>
+        </div>
+        <div id="generator" class="upg-container">
+          <div id="upg-name">Generator</div>
+          <div id="generator" class="current-gain">?</div>
+          <div id="generator" class="upg-buttons">
+            <button id="generator" class="upg-button">Buy for 1s</button>
+            <button id="generator" class="upg-max-button">MAX</button>
+          </div>
+        </div>
+        <div id="powerer" class="upg-container">
+          <div id="upg-name">Powerer</div>
+          <div id="powerer" class="current-gain">?</div>
+          <div id="powerer" class="upg-buttons">
+            <button id="powerer" class="upg-button">Buy for 1s</button>
+            <button id="powerer" class="upg-max-button">MAX</button>
+          </div>
+        </div>
+        <div id="counter" class="upg-container">
+          <div id="upg-name">Counter</div>
+          <div id="counter" class="current-gain">?</div>
+          <div id="counter" class="upg-buttons">
+            <button id="counter" class="upg-button">Buy for 1s</button>
+            <button id="counter" class="upg-max-button">MAX</button>
+          </div>
+        </div>
+      </div>
     </div>
-    <div id="time-reset" class="reset-container">
-          <button id="time-reset" class="reset-button" disabled>Cannot reset</button>
-    </div>
-    <div id="upgrades" class="upg-list">
-      <div id="hastener" class="upg-container">
-        <div id="upg-name">Hastener</div>
-        <div id="hastener" class="current-gain">?</div>
-        <div id="hastener" class="upg-buttons">
-          <button id="hastener" class="upg-button">Buy for 1s</button>
-          <button id="hastener" class="upg-max-button">MAX</button>
-        </div>
-      </div>
-      <div id="generator" class="upg-container">
-        <div id="upg-name">Generator</div>
-        <div id="generator" class="current-gain">?</div>
-        <div id="generator" class="upg-buttons">
-          <button id="generator" class="upg-button">Buy for 1s</button>
-          <button id="generator" class="upg-max-button">MAX</button>
-        </div>
-      </div>
-      <div id="powerer" class="upg-container">
-        <div id="upg-name">Powerer</div>
-        <div id="powerer" class="current-gain">?</div>
-        <div id="powerer" class="upg-buttons">
-          <button id="powerer" class="upg-button">Buy for 1s</button>
-          <button id="powerer" class="upg-max-button">MAX</button>
-        </div>
-      </div>
-      <div id="counter" class="upg-container">
-        <div id="upg-name">Counter</div>
-        <div id="counter" class="current-gain">?</div>
-        <div id="counter" class="upg-buttons">
-          <button id="counter" class="upg-button">Buy for 1s</button>
-          <button id="counter" class="upg-max-button">MAX</button>
-        </div>
+    <div id="--tab-rank" style="display: none">
+      <div id="rank">You have <span id="ranks-stat" class="stats">0s</span>.</div>
+      <div id="rank" class="reset-container">
+            <button id="time-reset" class="reset-button" disabled>Cannot reset</button>
       </div>
     </div>
   	<script src="./utils/break_eternity.js"></script>
