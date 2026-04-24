@@ -71,57 +71,51 @@ const data = {
 		amount: new Decimal(0),
 	},
 	rank: {
-		value: new Decimal(0),
+		get value() {
+			return new Decimal(0)
+		},
+		set value(n) {
+			if (this.resets) data.energy = new Decimal(0);
+			return new Decimal(n);
+		},
+		get req() {
+			return 
+		},
 		auto: false,
+		resets: true,
 	},
 	tier: {
-		value: new Decimal(0),
+		get value() {
+			return new Decimal(0)
+		},
+		set value(n) {
+			if (this.resets) data.rank.value = new Decimal(0);
+			return new Decimal(n);
+		},
 		auto: false,
+		resets: true,
 	},
 	tetr: {
-		value: new Decimal(0),
+		get value() {
+			return new Decimal(0)
+		},
+		set value(n) {
+			if (this.resets) data.tier.value = new Decimal(0);
+			return new Decimal(n);
+		},
 		auto: false,
+		resets: true,
 	},
 	pent: {
-		value: new Decimal(0),
-		auto: false,
-	},
-	beyondRanks: {
-		value: new Decimal(0),
-		get req() {
-	        let p = player.beyondRanks.value
-	
-	        let x = p.scale(1e14,2,"D").pow(1.25).mul(10).add(180)
-	
-	        return x.ceil()
-	    },
-		get bulk() {
-	        let x = player.pent.value.gte(180)?data.pent.value.sub(180).div(10).max(0).root(1.25).scale(1e14,2,"D",true).add(1).floor():E(0)
-	
-	        return x
-	    },
-		getTier(r=this.value) {
-	        let x = r.gt(0)?r.log10().max(0).pow(.8).mul(1).add(1).scale(24,1.6,"P",true).floor():E(1)
-	        return x
-	    },
-	    getRankFromTier(i,r=this) {
-	        let hp = Decimal.pow(10,Decimal.pow(Decimal.sub(i.scale(24,1.6,"P"),1).div(1),1/.8)).ceil()
-	
-	        return r.div(hp).floor()
-	    },
-	    getRequirementFromTier(i,t=this.latestRank,mt=this.getTier()) {
-	        let s = 24, p = 1.6
-	        return Decimal.pow(10,Decimal.pow(Decimal.div(mt.add(1).scale(s,p,"P").sub(1),1),1/.8).sub(Decimal.pow(Decimal.sub(mt,i).add(1).scale(s,p,"P").sub(1).div(1),1/.8))).mul(Decimal.add(t,1)).ceil()
-	    },
-	    getRankDisplayFromValue(r) {
-	        let tier = this.getTier(r), current = this.getRankFromTier(tier,r);
-			let g = rankLevelConverter(tier.add(5))
-	
-	        return rankLevelConverter(tier.add(5)) + ' ' + format(current)
-	    },
-		get latestRank() {
-			return this.getRankFromTier(this.getTier())
+		get value() {
+			return new Decimal(0)
 		},
+		set value(n) {
+			if (this.resets) data.tetr.value = new Decimal(0);
+			return new Decimal(n);
+		},
+		auto: false,
+		resets: true,
 	},
 	upgrades: {
 		hastener: new Upgrade({
@@ -150,7 +144,7 @@ const data = {
 			get totalCost() {
 				return Decimal.pow(7,this.level.sumBasePO(0.1)).mul(this.cost)
 			},
-			get bulk() {
+			bulk() {
 				return this.level.div(this.cost).log(7).sumBasePO(0.1,true).floor().add(1)
 			},
 			buy() {
@@ -158,19 +152,6 @@ const data = {
 				
 			},
 			curr: "energy"
-		},
-		B2: {
-			level: new Decimal(0),
-			cost: new Decimal(1e50),
-			get totalCost() {
-				return Decimal.pow(30,this.level.sumBasePO(0.1)).mul(this.cost)
-			},
-			get bulk() {
-				return this.level.div(this.cost).log(30).sumBasePO(0.1,true).floor().add(1)
-			},
-			buy() {
-			},
-			curr: "seconds"
 		},
 	},
 	timeResets: {
