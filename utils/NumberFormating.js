@@ -137,46 +137,6 @@ function formatTimeEx(s,prec=2) {
     }
         return format(s.div("31556952"),prec) + "y"
 }                         
-Decimal.prototype.modulo = Decimal.prototype.mod = other => {
-    other=new Decimal(other);
-    if (other.eq(0)) return new Decimal(0);
-    if (this.sign*other.sign==-1) return this.abs().mod(other.abs()).neg();
-    if (this.sign==-1) return this.abs().mod(other.abs());
-    return this.sub(this.div(other).floor().mul(other));
-};
-function basicRankLevel(x) {
-   x = new Decimal(x).floor()
-   let a = [
-      ["","point","rank","tier","tetr","pent","hex","hept","oct","ennea"],
-      ["","hen","du","tr","tetr","pent","hex","hept","oct","enn"],
-      ["","dek","icos","triant","terant","penint","exent","evdoment","ogdat","enent"],
-      ["","hect","diakis","triakis","tetrakis","pentakis","exakis","eptakis","octakis","enniakis"],
-   ]
-   function joiner(x) {
-      return ((x.modulo(100).eq(3))?"ia":(x.modulo(10).lte(2))?"":
-          (x.modulo(100).lt(10))?"":(x.modulo(100).eq(19))?"ea":(x.modulo(100).lt(20)&&!x.modulo(100).eq(13))?"a":"e")
-   }
-   return (x < 10) ? a[0][x] : a[3][x.div(100).floor()] +
-            a[1][x.mod(10)] +
-            joiner(x)+a[2][x.div(10).floor().mod(10)]
-}
-function rankLevelEX(x) {
-   x = new Decimal(x).floor()
-   let a = [
-       ["","kil","meg","gig","ter","pet","ex","zett","yott","ronn"],
-       ["","hen","du","tr","tetr","pent","hex","hept","oct","enn"]
-       ]
-    let joiner = ""
-    let y = Decimal.pow(10,x.log10().div(3).floor())
-   if (x.lt(1000)) {
-       return basicRankLevel(x)
-   }
-    if (!x.mod(y).eq(0)) {
-        joiner = x.log10().div(3).floor().eq(1)?"o":"a"
-    }
-    if (x.gte(1e30)) return `[${x}]`
-    return (x.div(y).gte(10) ? basicRankLevel(x) : x.div(y).gte(10) ? basicRankLevel(x) : "") + (x.mod(y).gte(1) ? "a" : "") + a[0][x.log10().div(3).floor()] + basicRankLevel(x.mod(y))
-}
 
 function toPlaces(x, precision, maxAccepted) {
     x = new Decimal(x)
